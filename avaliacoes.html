@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTok</title>
+    <link rel="icon" type="image/png" href="image/icone.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      .android-style .tiktok-logo {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .android-style .tiktok-logo img {
+        margin-bottom: -10px;
+        width: 100px;
+        margin: 10px;
+      }
+
+      .android-style .video {
+        width: 130px;
+        margin-top: -10px;
+        border-radius: 5px;
+      }
+
+      .android-style .creditos {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.829);
+        border-radius: 15px;
+        padding: 10px 20px;
+        margin-top: -30px;
+        z-index: 2;
+        color: #000000;
+        font-size: 1em;
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.296);
+        text-align: center;
+      }
+
+      .android-style .video-rating {
+        font-size: 0.9em;
+        margin-top: -10px;
+        text-align: center;
+      }
+
+      .android-style .rating-buttons {
+        gap: 2px;
+      }
+
+      .android-style .rating-btn {
+        background-color: #ddd;
+        border: none;
+        border-radius: 5px;
+        margin-top: -5px;
+        padding: 1px 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+
+      .android-style .video-container {
+        background-color: #fff;
+        margin-right: -10px;
+        margin-left: -10px;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        width: 110px;
+      }
+
+      .android-style .videos-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .android-style .video-feedback {
+        width: 200px;
+        font-size: 0.8em;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .android-style .videos-feedbacks {
+        width: 150px;
+        font-size: 0.8em;
+        text-align: center;
+        margin-top: 1px;
+      }
+
+      .announcement {
+        position: absolute;
+        top: 6%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.829);
+        border-radius: 15px;
+        padding: 8px 15px;
+        margin-top: -30px;
+        z-index: 2;
+        color: #000000;
+        font-size: 1em;
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.296);
+        text-align: center;
+      }
+
+      .creditos {
+        position: absolute;
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.829);
+        border-radius: 15px;
+        padding: 10px 20px;
+        margin-top: -30px;
+        z-index: 2;
+        color: #000000;
+        font-size: 1em;
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.296);
+        text-align: center;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          color: #000;
+          text-shadow: none;
+        }
+        50% {
+          color: #00ff0896;
+          text-shadow: 0 0 8px #6fca72b3, 0 0 10px #4caf50, 0 0 12px #4caf50,
+            0 0 14px #4caf50;
+        }
+      }
+
+      .glow {
+        animation: glow 1s ease-in-out;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(
+          90deg,
+          #00fffb,
+          #000000,
+          #000000,
+          #000,
+          #ff0048
+        );
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tiktok-logo {
+        text-align: center;
+        margin-bottom: -115px;
+        z-index: 2;
+      }
+
+      .tiktok-logo img {
+        justify-self: save;
+        width: 100px;
+        margin-bottom: -15px;
+        margin-top: 5px;
+      }
+
+      .cripto {
+        color: #939393a3;
+      }
+
+      .btn {
+        background: #02b4ba;
+        border: none;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      .btn:hover {
+        background: #00686b;
+      }
+
+      .finalizar-btn-container {
+        margin-top: 20px;
+      }
+
+      .videos-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .video-container {
+        background-color: #fff;
+        padding: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -50px;
+      }
+
+      .video {
+        width: 150px;
+      }
+
+      .video-feedback {
+        width: 200px;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .videos-feedbacks {
+        width: 200px;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 2px;
+      }
+
+      .feedback-btn {
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        margin: 1px;
+        cursor: pointer;
+      }
+
+      .yes {
+        padding: 10px;
+        background-color: #4caf50;
+      }
+
+      .no {
+        padding: 10px;
+        background-color: #f44336;
+      }
+
+      .video-rating {
+        font-size: 1em;
+        margin-top: -8px;
+      }
+
+      .rating-buttons {
+        margin-top: -8px;
+        gap: 5px;
+      }
+
+      .rating-btn {
+        background-color: #ddd;
+        border: none;
+        border-radius: 5px;
+        padding: 1px 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+
+      .rating-btn:hover {
+        background-color: #ccc;
+      }
+
+      .finalizar-btn-container {
+        text-align: center;
+        margin-top: 10px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="announcement">
+      <strong>Torne-se sócio: Avalie TikToks!</strong>
+    </div>
+    <div class="creditos">
+      <strong>Saldo: R$ 0,00</strong>
+    </div>
+
+    <div class="videos-container">
+      <div class="video-container">
+        <video class="video" src="/video/tiktok-1.mp4" controls></video>
+        <div class="video-feedback">Curtiu o vídeo?</div>
+        <div class="videos-feedbacks">
+          <button class="feedback-btn yes">Sim</button>
+          <button class="feedback-btn no">Não</button>
+        </div>
+        <div class="video-rating">
+          <p>Avalie: 1 a 5</p>
+          <div class="rating-buttons">
+            <button class="rating-btn">1</button>
+            <button class="rating-btn">2</button>
+            <button class="rating-btn">3</button>
+            <button class="rating-btn">4</button>
+            <button class="rating-btn">5</button>
+          </div>
+        </div>
+      </div>
+      <div class="video-container">
+        <video class="video" src="/video/tiktok-2.mp4" controls></video>
+        <div class="video-feedback">Curtiu o vídeo?</div>
+        <div class="videos-feedbacks">
+          <button class="feedback-btn yes">Sim</button>
+          <button class="feedback-btn no">Não</button>
+        </div>
+        <div class="video-rating">
+          <p>Avalie: 1 a 5</p>
+          <div class="rating-buttons">
+            <button class="rating-btn">1</button>
+            <button class="rating-btn">2</button>
+            <button class="rating-btn">3</button>
+            <button class="rating-btn">4</button>
+            <button class="rating-btn">5</button>
+          </div>
+        </div>
+      </div>
+      <div class="video-container">
+        <video class="video" src="/video/tiktok-3.mp4" controls></video>
+        <div class="video-feedback">Curtiu o vídeo?</div>
+        <div class="videos-feedbacks">
+          <button class="feedback-btn yes">Sim</button>
+          <button class="feedback-btn no">Não</button>
+        </div>
+        <div class="video-rating">
+          <p>Avalie: 1 a 5</p>
+          <div class="rating-buttons">
+            <button class="rating-btn">1</button>
+            <button class="rating-btn">2</button>
+            <button class="rating-btn">3</button>
+            <button class="rating-btn">4</button>
+            <button class="rating-btn">5</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="finalizar-btn-container">
+      <a href="/finalizar.html"
+        ><button class="btn" data-answer="yes">
+          <strong>Finalizar</strong>
+        </button></a
+      >
+    </div>
+
+    <div class="tiktok-logo">
+      <img src="image/tiktok.png" alt="Logo TikTok" />
+      <div class="footer">
+        <p>
+          <a href="">Políticas de Privacidade</a> |
+          <a href="">Termos de Serviço</a> |
+          <a href="">Direitos Autorais</a>
+        </p>
+      </div>
+      <div class="cripto">
+        <p>Ambiente criptografado e 100% seguro.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      let avaliacoesDeRating = 0;
+      function aplicarEfeitoBrilho(elemento) {
+        elemento.addClass("glow");
+        setTimeout(() => elemento.removeClass("glow"), 2000);
+      }
+      $(".feedback-btn, .rating-btn").click(function () {
+        let saldoElement = $(".creditos strong");
+        aplicarEfeitoBrilho(saldoElement);
+        if ($(this).hasClass("rating-btn")) {
+          aplicarEfeitoBrilho($(this));
+        }
+      });
+      $(".feedback-btn").click(function () {
+        if (!$(this).data("feedback")) {
+          $(this).data("feedback", true);
+          const valorAleatorioFeedback = Math.random() * (5.92 - 1.21) + 1.21;
+          atualizarSaldo(valorAleatorioFeedback, false);
+        }
+      });
+      $(".rating-btn").click(function () {
+        $(this).siblings().css("background-color", "#ddd");
+        $(this).css("background-color", "#4caf50");
+        if (!$(this).data("avaliado")) {
+          avaliacoesDeRating++;
+          $(this).data("avaliado", true);
+          const valorAleatorio = Math.random() * (67.31 - 31.91) + 31.91;
+          atualizarSaldo(valorAleatorio, true);
+        }
+      });
+      function atualizarSaldo(valorAdicional, verificarLimite) {
+        let saldoElement = $(".creditos strong");
+        let saldoAtual = parseFloat(
+          saldoElement.text().replace("Saldo: R$ ", "").replace(",", ".")
+        );
+        let novoSaldo = saldoAtual + valorAdicional;
+        const limite = 172.82;
+        if (
+          verificarLimite &&
+          avaliacoesDeRating == $(".video-container").length &&
+          novoSaldo < limite
+        ) {
+          novoSaldo = limite;
+        }
+        novoSaldo = Math.min(novoSaldo, limite);
+        saldoElement.text(
+          "Saldo: R$ " + novoSaldo.toFixed(2).replace(".", ",")
+        );
+        saldoElement.addClass("glow");
+        setTimeout(() => saldoElement.removeClass("glow"), 2000);
+      }
+
+      if (/Android/i.test(navigator.userAgent)) {
+        document.body.classList.add("android-style");
+      }
+    });
+  </script>
+</html>
